@@ -33,9 +33,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
-        onPressed: () {
+        onPressed: () async {
           final CharacterService service = GetIt.I.get();
-          service.getCharacters();
+          final response = await service.getCharacters();
 
           print(
               'my baseUrl is: ${GetIt.I.get<String>(instanceName: 'BaseUrl')}');
