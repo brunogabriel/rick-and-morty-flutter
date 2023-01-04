@@ -19,6 +19,8 @@ dependencies:
   injectable: ^2.1.0
   equatable: ^2.0.5
   flutter_bloc: ^8.1.1
+  stream_transform: ^2.1.0
+  bloc_concurrency: ^0.2.0
 
 dev_dependencies:
   flutter_test:
