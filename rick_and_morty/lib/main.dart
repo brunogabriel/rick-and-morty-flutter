@@ -1,9 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:rick_and_morty/home/presentation/page/home_page.dart';
 import 'package:rick_and_morty/injection.dart';
 import 'package:rick_and_morty/shared/theme/application_theme.dart';
-import 'package:rick_and_morty/shared/theme/data/app_theme.dart';
+import 'package:rick_and_morty/shared/theme/data/cubit/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +24,24 @@ class RickAndMortyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ApplicationTheme.themes[AppTheme.piano]?.themeData,
-      home: const HomePage(),
+    return BlocProvider<ThemeCubit>(
+      create: (_) => GetIt.I.get<ThemeCubit>(),
+      child: const _App(),
+    );
+  }
+}
+
+class _App extends StatelessWidget {
+  const _App();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ThemeCubit, String>(
+      builder: (_, state) => MaterialApp(
+        title: 'Flutter Demo',
+        theme: ApplicationTheme.byName(state)?.themeData,
+        home: const HomePage(),
+      ),
     );
   }
 }
