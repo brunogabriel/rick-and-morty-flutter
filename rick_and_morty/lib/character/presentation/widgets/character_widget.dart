@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rick_and_morty/character/presentation/bloc/character_bloc.dart';
 import 'package:rick_and_morty/character/presentation/widgets/character_card_widget.dart';
 import 'package:rick_and_morty/shared/widgets/default_loading_widget.dart';
@@ -56,10 +57,11 @@ class _CharacterWidgetState extends State<CharacterWidget> {
                     return CharacterCardWidget(
                       response: state.characters[index],
                       onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/details',
-                          arguments: {'id': state.characters[index].name},
+                        context.goNamed(
+                          'details',
+                          params: {
+                            'id': state.characters[index].id.toString(),
+                          },
                         );
                       },
                     );

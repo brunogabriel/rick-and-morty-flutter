@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import '../widgets/details_widget.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({
+    Key? key,
+    required this.characterId,
+  }) : super(key: key);
+
+  final String characterId;
 
   @override
   Widget build(BuildContext context) {
-    return const DetailsWidget();
+    return DetailsWidget(
+      characterId: characterId,
+    );
   }
 }
