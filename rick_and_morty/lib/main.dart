@@ -11,9 +11,10 @@ import 'package:rick_and_morty/shared/theme/data/cubit/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+  await configureDependencies();
   runApp(
     DevicePreview(
+      enabled: false,
       builder: (_) {
         return const RickAndMortyApp();
       },
@@ -58,6 +59,7 @@ class _App extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, String>(
       builder: (_, state) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: _router,
         theme: ApplicationTheme.byName(state)?.themeData,
       ),
