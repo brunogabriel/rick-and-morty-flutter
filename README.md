@@ -1,7 +1,5 @@
 # rick-and-morty-flutter
 
-<span>&#x1f1e7;&#x1f1f7;</span>
-
 ## Sobre o projeto
 
 O objetivo deste repositório é servir de base para um treinamento (_Learning Path_) chamado 'Flutter Hands on' que eu ministrei visando:
